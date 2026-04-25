@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinAI — AI Financial Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="currentColor"/></svg>
+      </div>
+      <span class="brand-name">FinAI</span>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-section-label">Main</div>
+      <a class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 3h6v6H3V3zm8 0h6v6h-6V3zM3 11h6v6H3v-6zm8 0h6v6h-6v-6z"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-item" data-page="portfolio" onclick="navigate('portfolio')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 5h16v2H2V5zm0 4h16v2H2V9zm0 4h10v2H2v-2z"/></svg>
+        Portfolio
+      </a>
+      <a class="nav-item" data-page="transactions" onclick="navigate('transactions')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 3l12 7-12 7V3zm2 3v8l7-4-7-4z"/></svg>
+        Transactions
+      </a>
+      <a class="nav-item" data-page="budget" onclick="navigate('budget')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4zm-1 3v4l3 2-1 1.5-3.5-2.5V7h1.5z"/></svg>
+        Budget
+      </a>
+      <a class="nav-item" data-page="insights" onclick="navigate('insights')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 17l4-8 4 4 4-6 3 3v7H3zm4-5l-2 4h12v-3l-2-2-4 6-4-4z"/></svg>
+        Insights
+      </a>
+
+      <div class="nav-section-label" style="margin-top:16px">Account</div>
+      <a class="nav-item" data-page="goals" onclick="navigate('goals')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4zm0 3a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        Goals
+      </a>
+      <a class="nav-item" onclick="navigate('settings')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.5 2h3l.5 2 1.5.9 2-.5 2 2.5-1 1.8.2 1.8 1 1.8-2 2.5-2-.5L12 17H9.5l-.5-2-1.5-.9-2 .5-2-2.5 1-1.8-.2-1.8-1-1.8 2-2.5 2 .5L8.5 2zM10 7a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-avatar">AR</div>
+      <div class="user-info">
+        <div class="user-name">Arjun Reddy</div>
+        <div class="user-plan">Pro Plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="main">
+
+    <!-- Dashboard Page -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Good morning, Arjun</h1>
+          <p class="page-sub">Here's your financial overview for April 2026</p>
+        </div>
+        <button class="btn-primary" onclick="navigate('chat')">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px"><path d="M8 1C4.13 1 1 3.69 1 7c0 1.7.75 3.24 1.97 4.34L2 14l2.79-1.24C5.76 13.26 6.86 13.5 8 13.5c3.87 0 7-2.69 7-6S11.87 1 8 1z"/></svg>
+          Ask AI Advisor
+        </button>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card primary">
+          <div class="metric-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 11H9V9h2v4zm0-6H9V5h2v2z"/></svg></div>
+          <div class="metric-content">
+            <div class="metric-label">Net Worth</div>
+            <div class="metric-value">₹48,320</div>
+            <div class="metric-delta positive">▲ +4.2% this month</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon green"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 5v3h3v2h-3v3H9v-3H6v-2h3V7h2z"/></svg></div>
+          <div class="metric-content">
+            <div class="metric-label">Savings</div>
+            <div class="metric-value">₹8,200</div>
+            <div class="metric-delta positive">▲ +₹420 added</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon amber"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3V5zm0 4h10v2H3V9zm0 4h6v2H3v-2z"/></svg></div>
+          <div class="metric-content">
+            <div class="metric-label">Monthly Spend</div>
+            <div class="metric-value">₹3,140</div>
+            <div class="metric-delta negative">▲ +6% vs last month</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon blue"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 4h16v3H2V4zm2 5h12v2H4V9zm2 4h8v2H6v-2z"/></svg></div>
+          <div class="metric-content">
+            <div class="metric-label">Budget Left</div>
+            <div class="metric-value">₹860</div>
+            <div class="metric-delta neutral">of ₹4,000 budget</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <!-- Holdings -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Portfolio Holdings</h3>
+            <button class="btn-link" onclick="navigate('portfolio')">View all →</button>
+          </div>
+          <div class="holdings-list">
+            <div class="holding-row">
+              <div class="ticker-badge blue">AAPL</div>
+              <div class="holding-info"><div class="holding-name">Apple Inc.</div><div class="holding-qty">12 shares</div></div>
+              <div class="holding-values"><div class="holding-price">₹2,340</div><div class="holding-change positive">+2.1%</div></div>
+            </div>
+            <div class="holding-row">
+              <div class="ticker-badge green">NVDA</div>
+              <div class="holding-info"><div class="holding-name">NVIDIA Corp.</div><div class="holding-qty">8 shares</div></div>
+              <div class="holding-values"><div class="holding-price">₹7,104</div><div class="holding-change positive">+12.3%</div></div>
+            </div>
+            <div class="holding-row">
+              <div class="ticker-badge teal">MSFT</div>
+              <div class="holding-info"><div class="holding-name">Microsoft Corp.</div><div class="holding-qty">5 shares</div></div>
+              <div class="holding-values"><div class="holding-price">₹2,165</div><div class="holding-change positive">+1.8%</div></div>
+            </div>
+            <div class="holding-row">
+              <div class="ticker-badge red">TSLA</div>
+              <div class="holding-info"><div class="holding-name">Tesla Inc.</div><div class="holding-qty">10 shares</div></div>
+              <div class="holding-values"><div class="holding-price">₹1,750</div><div class="holding-change negative">−3.1%</div></div>
+            </div>
+            <div class="holding-row">
+              <div class="ticker-badge purple">VOO</div>
+              <div class="holding-info"><div class="holding-name">Vanguard S&P 500</div><div class="holding-qty">15 shares</div></div>
+              <div class="holding-values"><div class="holding-price">₹6,810</div><div class="holding-change positive">+2.4%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget Tracker -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Budget Tracker</h3>
+            <button class="btn-link" onclick="navigate('budget')">Manage →</button>
+          </div>
+          <div class="budget-list">
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Housing</span><span class="budget-amounts">₹1,200 / ₹1,200</span></div>
+              <div class="budget-bar"><div class="budget-fill danger" style="width:100%"></div></div>
+            </div>
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Food & Dining</span><span class="budget-amounts">₹480 / ₹600</span></div>
+              <div class="budget-bar"><div class="budget-fill warning" style="width:80%"></div></div>
+            </div>
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Transport</span><span class="budget-amounts">₹210 / ₹400</span></div>
+              <div class="budget-bar"><div class="budget-fill success" style="width:52.5%"></div></div>
+            </div>
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Entertainment</span><span class="budget-amounts">₹320 / ₹400</span></div>
+              <div class="budget-bar"><div class="budget-fill warning" style="width:80%"></div></div>
+            </div>
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Utilities</span><span class="budget-amounts">₹130 / ₹200</span></div>
+              <div class="budget-bar"><div class="budget-fill success" style="width:65%"></div></div>
+            </div>
+            <div class="budget-row">
+              <div class="budget-meta"><span class="budget-name">Shopping</span><span class="budget-amounts">₹800 / ₹1,000</span></div>
+              <div class="budget-bar"><div class="budget-fill warning" style="width:80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="card full-width">
+          <div class="card-header">
+            <h3 class="card-title">Recent Transactions</h3>
+            <button class="btn-link" onclick="navigate('transactions')">View all →</button>
+          </div>
+          <table class="txn-table">
+            <thead><tr><th>Description</th><th>Category</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody id="txn-tbody">
+              <tr><td><div class="txn-desc"><div class="txn-icon food">🍽</div>Swiggy Order</div></td><td><span class="tag amber">Food</span></td><td>Apr 24</td><td class="amount negative">−₹480</td><td><span class="status-badge done">Done</span></td></tr>
+              <tr><td><div class="txn-desc"><div class="txn-icon income">📈</div>Dividend — NVDA</div></td><td><span class="tag green">Income</span></td><td>Apr 23</td><td class="amount positive">+₹210</td><td><span class="status-badge done">Done</span></td></tr>
+              <tr><td><div class="txn-desc"><div class="txn-icon housing">🏠</div>Rent Payment</div></td><td><span class="tag red">Housing</span></td><td>Apr 22</td><td class="amount negative">−₹1,200</td><td><span class="status-badge done">Done</span></td></tr>
+              <tr><td><div class="txn-desc"><div class="txn-icon transport">🚗</div>Ola Cab</div></td><td><span class="tag blue">Transport</span></td><td>Apr 21</td><td class="amount negative">−₹85</td><td><span class="status-badge done">Done</span></td></tr>
+              <tr><td><div class="txn-desc"><div class="txn-icon income">💼</div>Salary Credit</div></td><td><span class="tag green">Income</span></td><td>Apr 20</td><td class="amount positive">+₹5,000</td><td><span class="status-badge done">Done</span></td></tr>
+              <tr><td><div class="txn-desc"><div class="txn-icon entertain">🎬</div>Netflix Subscription</div></td><td><span class="tag purple">Entertainment</span></td><td>Apr 19</td><td class="amount negative">−₹649</td><td><span class="status-badge pending">Pending</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Page -->
+    <div class="page" id="page-chat">
+      <div class="chat-container">
+        <div class="chat-topbar">
+          <div class="chat-topbar-left">
+            <div class="ai-status-dot"></div>
+            <span>AI Financial Advisor</span>
+          </div>
+          <span class="model-tag">Claude Sonnet</span>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="chat-message ai">
+            <div class="msg-avatar ai">AI</div>
+            <div class="msg-bubble ai">
+              Hello! I'm your AI financial advisor powered by Claude. I can help you with portfolio analysis, budget planning, investment strategies, and answering any finance-related questions. What would you like to explore?
+            </div>
+          </div>
+        </div>
+        <div class="chat-chips" id="chat-chips">
+          <button class="chip" onclick="sendChip(this,'How is my portfolio performing?')">📊 Portfolio performance</button>
+          <button class="chip" onclick="sendChip(this,'Analyze my spending habits')">💸 Spending analysis</button>
+          <button class="chip" onclick="sendChip(this,'Should I rebalance my portfolio?')">⚖️ Rebalancing advice</button>
+          <button class="chip" onclick="sendChip(this,'Suggest investment strategies for me')">📈 Investment strategies</button>
+          <button class="chip" onclick="sendChip(this,'How can I save more money?')">🏦 Saving tips</button>
+          <button class="chip" onclick="sendChip(this,'What are my savings goals progress?')">🎯 Goals progress</button>
+        </div>
+        <div class="chat-inputbar">
+          <input type="text" id="chat-input" placeholder="Ask about your finances..." onkeydown="if(event.key==='Enter')sendChat()" />
+          <button class="send-btn" onclick="sendChat()">
+            <svg viewBox="0 0 16 16" fill="white"><path d="M1 1l14 7-14 7V9.5l10-1.5L1 6.5V1z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div class="page" id="page-portfolio">
+      <div class="page-header">
+        <div><h1 class="page-title">Portfolio</h1><p class="page-sub">Track and manage your investments</p></div>
+        <button class="btn-primary" onclick="navigate('chat')">+ Add Holding</button>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card primary"><div class="metric-content"><div class="metric-label">Total Value</div><div class="metric-value">₹48,320</div><div class="metric-delta positive">▲ +₹1,947 this month</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Day Gain</div><div class="metric-value positive">+₹384</div><div class="metric-delta positive">▲ +0.81%</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Total Gain</div><div class="metric-value positive">+₹5,120</div><div class="metric-delta positive">▲ +11.9% all time</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Dividend Income</div><div class="metric-value">₹640</div><div class="metric-delta neutral">This year</div></div></div>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <div class="card-header"><h3 class="card-title">All Holdings</h3></div>
+        <table class="txn-table">
+          <thead><tr><th>Ticker</th><th>Company</th><th>Shares</th><th>Avg Cost</th><th>Current</th><th>Value</th><th>Return</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ticker-badge blue">AAPL</span></td><td>Apple Inc.</td><td>12</td><td>₹168</td><td>₹195</td><td>₹2,340</td><td class="amount positive">+16.1%</td></tr>
+            <tr><td><span class="ticker-badge green">NVDA</span></td><td>NVIDIA Corp.</td><td>8</td><td>₹620</td><td>₹888</td><td>₹7,104</td><td class="amount positive">+43.2%</td></tr>
+            <tr><td><span class="ticker-badge teal">MSFT</span></td><td>Microsoft Corp.</td><td>5</td><td>₹380</td><td>₹433</td><td>₹2,165</td><td class="amount positive">+13.9%</td></tr>
+            <tr><td><span class="ticker-badge red">TSLA</span></td><td>Tesla Inc.</td><td>10</td><td>₹210</td><td>₹175</td><td>₹1,750</td><td class="amount negative">−16.7%</td></tr>
+            <tr><td><span class="ticker-badge purple">VOO</span></td><td>Vanguard S&P 500 ETF</td><td>15</td><td>₹390</td><td>₹454</td><td>₹6,810</td><td class="amount positive">+16.4%</td></tr>
+            <tr><td><span class="ticker-badge amber">AMZN</span></td><td>Amazon.com Inc.</td><td>6</td><td>₹145</td><td>₹182</td><td>₹1,092</td><td class="amount positive">+25.5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Transactions Page -->
+    <div class="page" id="page-transactions">
+      <div class="page-header">
+        <div><h1 class="page-title">Transactions</h1><p class="page-sub">All your income and expenses</p></div>
+        <div style="display:flex;gap:10px">
+          <select class="filter-select" onchange="filterTxns(this.value)">
+            <option value="all">All Categories</option>
+            <option value="Food">Food</option>
+            <option value="Income">Income</option>
+            <option value="Housing">Housing</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
+        </div>
+      </div>
+      <div class="card">
+        <table class="txn-table" id="full-txn-table">
+          <thead><tr><th>Description</th><th>Category</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="full-txn-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Budget Page -->
+    <div class="page" id="page-budget">
+      <div class="page-header"><div><h1 class="page-title">Budget Planner</h1><p class="page-sub">Monthly budget for April 2026</p></div><button class="btn-primary">Edit Budget</button></div>
+      <div class="metrics-grid">
+        <div class="metric-card primary"><div class="metric-content"><div class="metric-label">Total Budget</div><div class="metric-value">₹4,000</div><div class="metric-delta neutral">This month</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Spent</div><div class="metric-value">₹3,140</div><div class="metric-delta negative">78.5% used</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Remaining</div><div class="metric-value positive">₹860</div><div class="metric-delta positive">21.5% left</div></div></div>
+        <div class="metric-card"><div class="metric-content"><div class="metric-label">Projected Overage</div><div class="metric-value">₹0</div><div class="metric-delta positive">On track</div></div></div>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <div class="card-header"><h3 class="card-title">Category Breakdown</h3></div>
+        <div class="budget-detail-list">
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot danger"></div><div><div class="bdr-name">Housing</div><div class="bdr-sub">Rent & utilities</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill danger" style="width:100%"></div></div><span class="bdr-pct">100%</span></div><div class="bdr-right"><span class="amount negative">₹1,200 / ₹1,200</span></div></div>
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot warning"></div><div><div class="bdr-name">Food & Dining</div><div class="bdr-sub">Restaurants, groceries</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill warning" style="width:80%"></div></div><span class="bdr-pct">80%</span></div><div class="bdr-right"><span class="amount">₹480 / ₹600</span></div></div>
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot warning"></div><div><div class="bdr-name">Entertainment</div><div class="bdr-sub">OTT, movies, outings</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill warning" style="width:80%"></div></div><span class="bdr-pct">80%</span></div><div class="bdr-right"><span class="amount">₹320 / ₹400</span></div></div>
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot success"></div><div><div class="bdr-name">Transport</div><div class="bdr-sub">Cab, fuel, metro</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill success" style="width:52.5%"></div></div><span class="bdr-pct">53%</span></div><div class="bdr-right"><span class="amount">₹210 / ₹400</span></div></div>
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot success"></div><div><div class="bdr-name">Utilities</div><div class="bdr-sub">Electric, internet, water</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill success" style="width:65%"></div></div><span class="bdr-pct">65%</span></div><div class="bdr-right"><span class="amount">₹130 / ₹200</span></div></div>
+          <div class="budget-detail-row"><div class="bdr-left"><div class="bdr-dot warning"></div><div><div class="bdr-name">Shopping</div><div class="bdr-sub">Clothing, electronics</div></div></div><div class="bdr-bar-col"><div class="budget-bar wide"><div class="budget-fill warning" style="width:80%"></div></div><span class="bdr-pct">80%</span></div><div class="bdr-right"><span class="amount">₹800 / ₹1,000</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights Page -->
+    <div class="page" id="page-insights">
+      <div class="page-header"><div><h1 class="page-title">AI Insights</h1><p class="page-sub">Smart recommendations from your financial AI</p></div></div>
+      <div class="insights-grid">
+        <div class="insight-card-big green">
+          <div class="insight-tag">Portfolio</div>
+          <h3>NVDA up 12.3% this month</h3>
+          <p>Your best performing asset. Consider taking partial profits to lock in gains and rebalance toward your target allocation.</p>
+          <button class="insight-action" onclick="navigate('chat')">Discuss with AI →</button>
+        </div>
+        <div class="insight-card-big amber">
+          <div class="insight-tag">Budget</div>
+          <h3>Housing budget at 100%</h3>
+          <p>Your housing expense has hit the ceiling. No further allocation possible this month. You're on track for other categories.</p>
+          <button class="insight-action" onclick="navigate('budget')">Review Budget →</button>
+        </div>
+        <div class="insight-card-big blue">
+          <div class="insight-tag">Savings</div>
+          <h3>Emergency fund 82% complete</h3>
+          <p>Just ₹1,800 away from your emergency fund goal. At your current savings rate, you'll hit it in ~2 months.</p>
+          <button class="insight-action" onclick="navigate('goals')">View Goals →</button>
+        </div>
+        <div class="insight-card-big red">
+          <div class="insight-tag">Risk</div>
+          <h3>Tech sector overweight at 68%</h3>
+          <p>Your portfolio has high concentration in tech. Consider diversifying with international ETFs or bonds to reduce risk.</p>
+          <button class="insight-action" onclick="navigate('chat')">Get Advice →</button>
+        </div>
+        <div class="insight-card-big teal">
+          <div class="insight-tag">Tax</div>
+          <h3>Tax-loss harvest opportunity</h3>
+          <p>TSLA is down 16.7%. You can sell and rebuy after 30 days to realize the loss and offset capital gains tax from NVDA profits.</p>
+          <button class="insight-action" onclick="navigate('chat')">Learn More →</button>
+        </div>
+        <div class="insight-card-big purple">
+          <div class="insight-tag">Spending</div>
+          <h3>Food spend up 14% vs last month</h3>
+          <p>Increased dining out detected. Meal prepping 2–3x per week could save approximately ₹80/month over time.</p>
+          <button class="insight-action" onclick="navigate('transactions')">View Transactions →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Page -->
+    <div class="page" id="page-goals">
+      <div class="page-header"><div><h1 class="page-title">Savings Goals</h1><p class="page-sub">Track your financial milestones</p></div><button class="btn-primary">+ New Goal</button></div>
+      <div class="goals-grid">
+        <div class="goal-card">
+          <div class="goal-header"><span class="goal-icon">🛡️</span><div><div class="goal-name">Emergency Fund</div><div class="goal-target">Target: ₹10,000</div></div><span class="goal-pct positive">82%</span></div>
+          <div class="budget-bar" style="margin:12px 0"><div class="budget-fill success" style="width:82%"></div></div>
+          <div class="goal-footer"><span>₹8,200 saved</span><span class="goal-eta">~2 months left</span></div>
+        </div>
+        <div class="goal-card">
+          <div class="goal-header"><span class="goal-icon">✈️</span><div><div class="goal-name">Vacation 2026</div><div class="goal-target">Target: ₹3,000</div></div><span class="goal-pct" style="color:#BA7517">47%</span></div>
+          <div class="budget-bar" style="margin:12px 0"><div class="budget-fill warning" style="width:47%"></div></div>
+          <div class="goal-footer"><span>₹1,400 saved</span><span class="goal-eta">~4 months left</span></div>
+        </div>
+        <div class="goal-card">
+          <div class="goal-header"><span class="goal-icon">🏠</span><div><div class="goal-name">Down Payment</div><div class="goal-target">Target: ₹50,000</div></div><span class="goal-pct" style="color:#185FA5">26%</span></div>
+          <div class="budget-bar" style="margin:12px 0"><div class="budget-fill" style="width:26%;background:#378ADD"></div></div>
+          <div class="goal-footer"><span>₹12,800 saved</span><span class="goal-eta">~2 years left</span></div>
+        </div>
+        <div class="goal-card">
+          <div class="goal-header"><span class="goal-icon">🎓</span><div><div class="goal-name">Education Fund</div><div class="goal-target">Target: ₹20,000</div></div><span class="goal-pct" style="color:#533AB7">15%</span></div>
+          <div class="budget-bar" style="margin:12px 0"><div class="budget-fill" style="width:15%;background:#7F77DD"></div></div>
+          <div class="goal-footer"><span>₹3,000 saved</span><span class="goal-eta">~3 years left</span></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
